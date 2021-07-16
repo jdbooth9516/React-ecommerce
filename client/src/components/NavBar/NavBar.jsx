@@ -102,7 +102,7 @@ export default function NavBar(props) {
               }}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}><Link to="/registerform">Register</Link></MenuItem>
+              <MenuItem onClick={handleClose}><Link to="/register">Register</Link></MenuItem>
 
             </Menu>
           </IconButton>
