@@ -1,0 +1,23 @@
+{
+  "name": "react-ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdbooth9516/React-ecommerce.git"
+  },
+  "author": "Jeremiah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdbooth9516/React-ecommerce/issues"
+  },
+  "homepage": "https://github.com/jdbooth9516/React-ecommerce#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.12.1",
+    "@material-ui/icons": "^4.11.2"
+  }
+}
