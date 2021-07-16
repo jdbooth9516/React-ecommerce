@@ -12,12 +12,25 @@ function App() {
   const [products, setProducts] = useState([]);
   const [productID, setProductId] = useState(10);
   const [allProducts, setAllProducts] = useState(true);
+  const [shoppingCart, setShoppingCart] = useState([]);
+  const [user, setUser] = useState([]);
+
 
   useEffect(async()=>{
     let response = await axios.get(`https://localhost:44394/api/products`);
     console.log(response.data);
     setProducts(response.data);
   },[]);
+
+  useEffect(async()=>{
+    getUserCart(user.id);
+  },[user])
+
+  const getUserCart = async (userId)=>{
+    let response = await axios.post(`https://localhost:44394/api/shoppingcart/user`, userId);
+    console.log(response.data);
+    setShoppingCart(response.data);
+  }
 
   const searchProducts = async (searchInput) => {
     let response = await axios.post(`https://localhost:44394/api/products/name`, searchInput);
