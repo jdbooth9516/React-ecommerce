@@ -23,12 +23,8 @@ function App() {
   }
   return (
     <div className="App">
-<<<<<<< HEAD
-      <NavBar searchProducts={searchProducts}/>
-=======
      <NavBar searchProducts={searchProducts}/>
      <DisplayProducts products={products}/>
->>>>>>> 05aa1f9fc43c57ceeab0512fef9176497ebe30fa
 
       {/* links to other pages inside of switch    */}
      <Switch>
