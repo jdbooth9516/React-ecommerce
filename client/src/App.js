@@ -5,10 +5,13 @@ import axios from 'axios';
 import './App.css';
 import NavBar from "./components/NavBar/NavBar"
 import DisplayProducts from "./components/DisplayProducts/displayProducts";
+import { ProductDetails } from "./components/ProductDetails/ProductDetails";
 
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [productID, setProductId] = useState(10);
+  const [allProducts, setAllProducts] = useState(true);
 
   useEffect(async()=>{
     let response = await axios.get(`https://localhost:44394/api/products`);
@@ -24,12 +27,13 @@ function App() {
   return (
     <div className="App">
      <NavBar searchProducts={searchProducts}/>
-     <DisplayProducts products={products}/>
-
+     {allProducts ? (
+       <DisplayProducts products={products} setAll={setAllProducts} setProductId={setProductId}/>
+     ) : null}  
       {/* links to other pages inside of switch    */}
      <Switch>
       <Route path="/register" component={RegistrationForm}/>
-      <Redirect to="/not-found"/>
+      <Route path={"/product/" + productID} render={props => <ProductDetails {...props} product={products[productID]}/>}/>
      </Switch>
     </div>
   );

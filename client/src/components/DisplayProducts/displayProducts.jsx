@@ -1,12 +1,16 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom'
 
 const DisplayProducts=(props)=>{
-    const products = props.products.map((product)=>
-            <div>
-                <h1>{product.name}</h1>
-                <h2>{product.price}</h2>
-            </div>
+    
+    const products = props.products.map((product, index)=>
+        <div onClick={() => {props.setProductId(index); props.setAll(false)}}>
+            <Link to={"/product/" + index}>
+            <h1>{product.name}</h1>
+            <h2>{product.price}</h2>
+            </Link>
+        </div>
     );
 
     return(
