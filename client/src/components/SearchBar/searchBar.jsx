@@ -3,16 +3,20 @@ import { values } from 'regenerator-runtime';
 import useForm from '../UseForm/useForm';
 
 const SearchBar = (props) => {
-    const { values, handleChange, handleSubmit } = useForm(/*search function*/)
+    const { values, handleChange, handleSubmit } = useForm(searchProducts)
+
+    function searchProducts(){
+        props.searchProducts(values.searchInput);
+    }
 
     return (
         <div className="searchBar">
             <form onSubmit={handleSubmit}>
                 <label>
-                    Search:
                     <input
                         type="text"
                         name="searchInput"
+                        placeholder="Search products..."
                         onChange={handleChange}
                         value={values.searchInput}
                         required={true}
