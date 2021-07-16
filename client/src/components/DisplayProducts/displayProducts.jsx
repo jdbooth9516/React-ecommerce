@@ -4,9 +4,9 @@ import {Link} from 'react-router-dom'
 
 const DisplayProducts=(props)=>{
     
-    const products = props.products.map((product)=>
-        <div onClick={props.setProductId(product.productId)}>
-            <Link to={"/product/" + product.productId}>
+    const products = props.products.map((product, index)=>
+        <div onClick={() => {props.setProductId(index); props.setAll(false)}}>
+            <Link to={"/product/" + index}>
             <h1>{product.name}</h1>
             <h2>{product.price}</h2>
             </Link>
