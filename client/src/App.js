@@ -8,6 +8,7 @@ import DisplayProducts from "./components/DisplayProducts/displayProducts";
 function App() {
   const [products, setProducts] = useState([]);
 
+
   useEffect(async()=>{
     let response = await axios.get(`https://localhost:44394/api/products`);
     console.log(response.data);
