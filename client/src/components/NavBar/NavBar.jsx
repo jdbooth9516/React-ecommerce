@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import { Link } from 'react-router-dom';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,6 +68,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBar() {
   const classes = useStyles();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+
+  const handleMenu = () => { 
+    setMenuOpen(true);
+  }
+
+  const handleClose = () => { 
+    setMenuOpen(false);
+  }
 
   return (
     <div className={classes.root}>
@@ -76,7 +89,21 @@ export default function NavBar() {
             color="inherit"
             aria-label="open drawer"
           >
-            <MenuIcon />
+            <MenuIcon onClick={handleMenu} 
+            />
+            {/* this will need to change depending on the login status */}
+            <Menu 
+              id= "menu-navbar" 
+              open={menuOpen} 
+              anchorOrigin={{
+                verical: 'top',
+                horizontal: 'left',
+              }}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}><Link to="/registerform">Register</Link></MenuItem>
+
+            </Menu>
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             Material-UI
