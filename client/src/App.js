@@ -9,6 +9,8 @@ import DisplayProducts from "./components/DisplayProducts/displayProducts";
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [shoppingCart, setShoppingCart] = useState([]);
+  const [user, setUser] = useState([]);
 
 
   useEffect(async()=>{
@@ -17,6 +19,16 @@ function App() {
     setProducts(response.data);
   },[]);
 
+  useEffect(async()=>{
+    getUserCart(user.id);
+  },[user])
+
+  const getUserCart = async (userId)=>{
+    let response = await axios.post(`https://localhost:44394/api/shoppingcart/user`, userId);
+    console.log(response.data);
+    setShoppingCart(response.data);
+  }
+
   const searchProducts = async (searchInput) => {
     let response = await axios.post(`https://localhost:44394/api/products/name`, searchInput);
     console.log(response.data);
@@ -24,12 +36,8 @@ function App() {
   }
   return (
     <div className="App">
-<<<<<<< HEAD
-      <NavBar searchProducts={searchProducts}/>
-=======
      <NavBar searchProducts={searchProducts}/>
      <DisplayProducts products={products}/>
->>>>>>> 05aa1f9fc43c57ceeab0512fef9176497ebe30fa
 
       {/* links to other pages inside of switch    */}
      <Switch>
