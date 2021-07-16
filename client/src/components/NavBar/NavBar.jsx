@@ -7,6 +7,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import SearchBar from '../SearchBar/searchBar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -83,7 +84,7 @@ export default function NavBar() {
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
-              <SearchIcon />
+              <SearchBar />
             </div>
             <InputBase
               placeholder="Search…"
