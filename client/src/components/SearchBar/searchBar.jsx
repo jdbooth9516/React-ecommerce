@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
+import FindInPageIcon from '@material-ui/icons/FindInPage';
 import { values } from 'regenerator-runtime';
 import useForm from '../UseForm/useForm';
+import "./searchBar.css"
 
 const SearchBar = (props) => {
     const { values, handleChange, handleSubmit } = useForm(searchProducts)
@@ -11,9 +13,10 @@ const SearchBar = (props) => {
 
     return (
         <div className="searchBar">
-            <form onSubmit={handleSubmit}>
-                <label>
+            <form className="search-form" onSubmit={handleSubmit}>
+                <label className="search-label">
                     <input
+                        className="search-bar"
                         type="text"
                         name="searchInput"
                         placeholder="Search products..."
@@ -22,7 +25,7 @@ const SearchBar = (props) => {
                         required={true}
                     />
                 </label>
-                <button type="submit">Search</button>
+                <button className="search-btn" type="submit"><FindInPageIcon aria-label="search"/></button>
             </form>
         </div>
     );

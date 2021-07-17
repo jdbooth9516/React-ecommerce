@@ -6,7 +6,7 @@ const DisplayProducts=(props)=>{
     
     const products = props.products.map((product, index)=>
         <div onClick={() => {props.setProductId(index); props.setAll(false)}}>
-            <Link to={"/product/" + index}>
+            <Link className="links" to={"/product/" + index}>
             <h1>{product.name}</h1>
             <h2>{product.price}</h2>
             </Link>

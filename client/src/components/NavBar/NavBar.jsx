@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
+import './NavBar.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,31 +39,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
       width: 'auto',
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
     },
   },
 }));
@@ -102,25 +78,17 @@ export default function NavBar(props) {
               }}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}><Link to="/register">Register</Link></MenuItem>
-
+              <MenuItem onClick={handleClose}><Link className="links" to="/register">Register</Link></MenuItem>
+              <MenuItem onClick={handleClose}><Link className="links" to="/link">Login</Link></MenuItem>
             </Menu>
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Beard Care
           </Typography>
           <div className={classes.search}>
             <div >
               <SearchBar searchProducts={props.searchProducts}/>
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
           </div>
         </Toolbar>
       </AppBar>

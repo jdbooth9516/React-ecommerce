@@ -1,0 +1,14 @@
+Link { 
+    text-decoration: none;
+    color: rgb(39, 39, 39)
+}
+
+
+
+.MuiMenu-list { 
+    background-color: rgb(221, 221, 221);
+}
+
+.MuiToolbar-regular { 
+    background-color: rgb(76, 76, 100);
+}

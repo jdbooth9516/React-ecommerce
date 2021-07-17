@@ -1,3 +1,7 @@
+
+
+
+
 .App {
   text-align: center;
 }
@@ -26,6 +30,15 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.links {
+  text-decoration: none;
+  color: #282c34
+}
+
+.links:visited { 
+  color: #282c34
 }
 
 @keyframes App-logo-spin {
