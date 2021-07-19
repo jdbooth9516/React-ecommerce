@@ -15,6 +15,7 @@ const AddRating = (props) => {
             console.log(rating);
             let response = await axios.post(`https://localhost:44394/api/ratings`, rating);
             console.log(response.data);
+            alert(`Successfully rated as ${values.userRating}`);
         }else{
             const rating = {
                 userRating: 1,
@@ -25,6 +26,7 @@ const AddRating = (props) => {
             console.log(rating);
             let response = await axios.post(`https://localhost:44394/api/ratings`, rating);
             console.log(response.data);
+            alert(`Successfully rated as 1`);
         }
     }
     const { values, handleChange, handleSubmit } = useForm(postRating);
