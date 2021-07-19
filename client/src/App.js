@@ -46,7 +46,7 @@ function App() {
   }
 
   const searchProducts = async (searchInput) => {
-    let response = await axios.post(`https://localhost:44394/api/products/name`, searchInput);
+    let response = await axios.get(`https://localhost:44394/api/products/search/${searchInput}`);
     console.log(response.data);
     setProducts(response.data);
   }
@@ -60,7 +60,7 @@ function App() {
      <Switch>
       <Route path="/register" component={RegistrationForm}/>
       <Route path="/cart" component={ShoppingCart}/>
-      <Route path={"/product/" + productID} render={props => <ProductDetails {...props} productReviews={productReviews} product={products.filter(product=> product.productId == productID)}/>}/>
+      <Route path={"/product/" + productID} render={props => <ProductDetails {...props} productReviews={productReviews} product={products.filter(product=> product.productId == productID)} productId={productID}/>}/>
      </Switch>
     </div>
   );

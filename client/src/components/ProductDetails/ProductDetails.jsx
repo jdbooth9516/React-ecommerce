@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import DisplayProductReviews from '../DisplayReviews/displayReviews';
+import AddRating from '../Rating/addRatingForm';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,6 +29,7 @@ export const ProductDetails = (props) => {
             <Button variant="outlined" color="primary">
         Add to Cart
       </Button>
+      <AddRating productId={props.productId}/>
       <DisplayProductReviews productReviews={props.productReviews}/>
         </div>
     )
