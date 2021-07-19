@@ -6,6 +6,7 @@ import './App.css';
 import NavBar from "./components/NavBar/NavBar"
 import DisplayProducts from "./components/DisplayProducts/displayProducts";
 import { ProductDetails } from "./components/ProductDetails/ProductDetails";
+import Login from "./components/LogIn/logIn";
 
 
 function App() {
