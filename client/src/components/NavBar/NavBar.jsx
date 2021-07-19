@@ -15,6 +15,7 @@ import './NavBar.css';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    justifyContent: "space-between",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+
   },
   search: {
     position: 'relative',
@@ -58,13 +60,13 @@ export default function NavBar(props) {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar className=" nav-container">
           <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
-          >
+            >
             <MenuIcon onClick={handleMenu} 
             />
             {/* this will need to change depending on the login status */}
@@ -76,24 +78,25 @@ export default function NavBar(props) {
                 horizontal: 'left',
               }}
               onClose={handleClose}
-            >
+              >
               <MenuItem onClick={handleClose}><Link className="links" to="/register">Register</Link></MenuItem>
               <MenuItem onClick={handleClose}><Link className="links" to="/link">Login</Link></MenuItem>
             </Menu>
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Beard Care
-          </Typography>
           <div>
-            <div>
-              <IconButton className='cart-icon' aria-label='shopping-cart'><Link className="links shopping-cart" to="/cart"><ShoppingCartIcon/></Link></IconButton>
-            </div>
+            <button className="logo" onClick={() => {window.location="/"}}>Beard Care</button>
           </div>
+          <Typography className={classes.title} variant="h6" noWrap>
+          
           <div className={classes.search}>
             <div >
               <SearchBar searchProducts={props.searchProducts}/>
             </div>
           </div>
+          </Typography>
+            <div>
+              <IconButton className='cart-icon' aria-label='shopping-cart'><Link className="links shopping-cart" to="/cart"><ShoppingCartIcon/></Link></IconButton>
+            </div>
         </Toolbar>
       </AppBar>
     </div>

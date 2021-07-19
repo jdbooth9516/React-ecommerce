@@ -6,17 +6,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -41,8 +30,22 @@
   color: #282c34
 }
 
+.logo { 
+  background-color: rgb(76, 76, 100);
+  color: aliceblue;
+  font-size: 1.5em;
+  border: none;
+  margin-right: 2vw;
+}
+
+.logo:visited { 
+  color: aliceblue;
+}
+
+
 .shopping-cart { 
   padding-top: 1vh;
+  padding-right: 2vw;
   color: aliceblue;
 }
 

@@ -16,7 +16,9 @@
 }
 
 .search-bar{
+    position: inherit;
     border: none;
+    min-width: 75vw;
     background-color: rgb(97, 97, 131);
     color: aliceblue;
     margin-right: 1vw;
@@ -35,3 +37,4 @@
     color: aliceblue;
     padding-top: 0.5vh;
 }
+

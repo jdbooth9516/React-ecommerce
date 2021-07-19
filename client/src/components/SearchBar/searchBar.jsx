@@ -14,6 +14,7 @@ const SearchBar = (props) => {
     return (
         <div className="searchBar">
             <form className="search-form" onSubmit={handleSubmit}>
+                <button className="search-btn" type="submit"><FindInPageIcon aria-label="search"/></button>
                 <label className="search-label">
                     <input
                         className="search-bar"
@@ -25,7 +26,6 @@ const SearchBar = (props) => {
                         required={true}
                     />
                 </label>
-                <button className="search-btn" type="submit"><FindInPageIcon aria-label="search"/></button>
             </form>
         </div>
     );

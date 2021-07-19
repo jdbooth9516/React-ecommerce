@@ -20,11 +20,9 @@ function App() {
     let response = await axios.get(`https://localhost:44394/api/products`);
     console.log(response.data);
     setProducts(response.data);
-  },[]);
-
-  useEffect(async()=>{
     getUserCart(user.id);
-  },[user])
+  },[user]);
+
 
   const getUserCart = async (userId)=>{
     let response = await axios.post(`https://localhost:44394/api/shoppingcart/user`, userId);

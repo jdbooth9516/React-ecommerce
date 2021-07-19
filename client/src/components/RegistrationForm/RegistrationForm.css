@@ -1,0 +1,25 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.reg-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 60vw;
+}
+
+.form-item {
+  margin: 1vh 0 1vh 0;
+}
+
+.MuiOutlinedInput-root {
+  min-width: 45vw;
+}
+
+.MuiInput-root {
+  min-width: 45vw;
+}
