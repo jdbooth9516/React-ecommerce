@@ -80,7 +80,7 @@ export default function NavBar(props) {
               onClose={handleClose}
               >
               <MenuItem onClick={handleClose}><Link className="links" to="/register">Register</Link></MenuItem>
-              <MenuItem onClick={handleClose}><Link className="links" to="/link">Login</Link></MenuItem>
+              <MenuItem onClick={handleClose}><Link className="links" to="/login">Login</Link></MenuItem>
             </Menu>
           </IconButton>
           <div>
