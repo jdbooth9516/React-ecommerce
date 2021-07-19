@@ -47,10 +47,7 @@ function App() {
   };
 
   const searchProducts = async (searchInput) => {
-    let response = await axios.post(
-      `https://localhost:44394/api/products/name`,
-      searchInput
-    );
+    let response = await axios.get(`https://localhost:44394/api/products/search/${searchInput}`);
     console.log(response.data);
     setProducts(response.data);
   };
@@ -77,6 +74,7 @@ function App() {
               product={products.filter(
                 (product) => product.productId == productID
               )}
+              productId={productID}
             />
           )}
         />
@@ -84,6 +82,8 @@ function App() {
         {/* need to create the logout function still */}
         {/* <Route path="/logout" component={Logout} /> */}
       </Switch>
+     <Switch>
+     </Switch>
     </div>
   );
 }
