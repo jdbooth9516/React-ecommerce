@@ -41,6 +41,15 @@
   color: #282c34
 }
 
+.shopping-cart { 
+  padding-top: 1vh;
+  color: aliceblue;
+}
+
+.shopping-cart:visited { 
+  color: aliceblue;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
