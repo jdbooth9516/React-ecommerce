@@ -5,6 +5,7 @@ import axios from 'axios';
 import './App.css';
 import NavBar from "./components/NavBar/NavBar"
 import DisplayProducts from "./components/DisplayProducts/displayProducts";
+import Login from "./components/LogIn/logIn";
 
 
 function App() {
@@ -23,17 +24,16 @@ function App() {
   }
   return (
     <div className="App">
-<<<<<<< HEAD
-      <NavBar searchProducts={searchProducts}/>
-=======
      <NavBar searchProducts={searchProducts}/>
      <DisplayProducts products={products}/>
->>>>>>> 05aa1f9fc43c57ceeab0512fef9176497ebe30fa
 
       {/* links to other pages inside of switch    */}
      <Switch>
       <Route path="/register" component={RegistrationForm}/>
       <Redirect to="/not-found"/>
+     </Switch>
+     <Switch>
+      <Route path="/login" component={Login}/>
      </Switch>
     </div>
   );
