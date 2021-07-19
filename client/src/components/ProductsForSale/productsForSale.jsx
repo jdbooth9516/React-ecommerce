@@ -9,6 +9,11 @@ const DisplayProductsForSale=(props)=>{
                 <h1>{product.name}</h1>
                 <h2>{product.price}</h2>
             </div>
+        );
+        return(
+            <div>
+                {productsForSale}
+            </div>
         )
     }else{
         return(
@@ -17,12 +22,6 @@ const DisplayProductsForSale=(props)=>{
             </div>
         )
     }
-
-    return(
-        <div>
-            {productsForSale}
-        </div>
-    )
 }
 
 export default DisplayProductsForSale;
