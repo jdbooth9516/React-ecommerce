@@ -7,7 +7,7 @@ import NavBar from "./components/NavBar/NavBar"
 import DisplayProducts from "./components/DisplayProducts/displayProducts";
 import { ProductDetails } from "./components/ProductDetails/ProductDetails";
 import Login from "./components/LogIn/logIn";
-
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -47,7 +47,9 @@ function App() {
       {/* links to other pages inside of switch    */}
      <Switch>
       <Route path="/register" component={RegistrationForm}/>
+      <Route path="/cart" component={ShoppingCart}/>
       <Route path={"/product/" + productID} render={props => <ProductDetails {...props} product={products[productID]}/>}/>
+      <Route path="/login" component={Login}/>
      </Switch>
     </div>
   );
