@@ -17,6 +17,7 @@ function App() {
   const [allProducts, setAllProducts] = useState(true);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [user, setUser] = useState([]);
+  const [auth, setAuth] = useState(null);
 
   useEffect(async () => {
     let response = await axios.get(`https://localhost:44394/api/products`);
@@ -55,7 +56,7 @@ function App() {
   };
   return (
     <div className="App">
-      <NavBar searchProducts={searchProducts} />
+      <NavBar searchProducts={searchProducts} auth={auth} />
       {allProducts ? (
         <DisplayProducts
           products={products}
@@ -80,6 +81,8 @@ function App() {
           )}
         />
         <Route path="/login" component={Login} />
+        {/* need to create the logout function still */}
+        {/* <Route path="/logout" component={Logout} /> */}
       </Switch>
     </div>
   );
