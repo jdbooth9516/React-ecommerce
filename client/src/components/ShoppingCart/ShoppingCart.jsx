@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const ShoppingCart = (props) => {
+  console.log(props);
   if (props.shoppingCart.length > 0) {
     let priceTotal = 0;
     for (var i = 0; i < props.shoppingCart.length; i++) {

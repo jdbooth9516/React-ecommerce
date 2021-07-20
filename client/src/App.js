@@ -35,10 +35,6 @@ function App() {
     getProductReviews(productID);
   }, [productID]);
 
-  useEffect(async () => {
-    getUser();
-  }, []);
-
   const getUserCart = async (userId) => {
     let response = await axios.get(
       `https://localhost:44394/api/shoppingcart/user/${userId}`
@@ -47,8 +43,13 @@ function App() {
     setShoppingCart(response.data);
   };
 
+  useEffect(async () => {
+    getUser();
+  }, []);
+
   const getUser = async () => {
     const jwt = localStorage.getItem("token");
+    console.log(jwt);
     try {
       let response = await axios.get(
         "https://localhost:44394/api/examples/user",
@@ -96,13 +97,23 @@ function App() {
       {/* links to other pages inside of switch    */}
       <Switch>
         <Route path="/register" component={RegistrationForm} />
-        <Route path="/cart" component={ShoppingCart} />
+        <Route
+          path="/cart"
+          render={(props) => (
+            <ShoppingCart
+              {...props}
+              component={ShoppingCart}
+              shoppingCart={shoppingCart}
+            />
+          )}
+        />
         <Route
           path={"/product/" + productID}
           render={(props) => (
             <ProductDetails
               {...props}
               productReviews={productReviews}
+              user={user}
               product={products.filter(
                 (product) => product.productId == productID
               )}

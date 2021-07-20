@@ -61,29 +61,11 @@ export const ProductDetails = (props) => {
 
       <div className="reviews">
         <div>
-          <div>
-            <h1>{props.product[0].name}</h1>
-          </div>
-          <div>
-            <p>{props.product[0].discription}</p>
-          </div>
-          <div>
-            <h4>{props.product[0].price}</h4>
-          </div>
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() => {
-              AddProductToCart(props);
-            }}
-          >
-            Add to Cart
-          </Button>
           <AddRating productId={props.productId} />
           <ReviewForm
             productId={props.productId}
             getProductReviews={props.getProductReviews}
-            userId={props.user.id}
+            user={props.user}
           />
           <DisplayProductReviews productReviews={props.productReviews} />
         </div>
