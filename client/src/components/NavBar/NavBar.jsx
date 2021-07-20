@@ -98,6 +98,11 @@ export default function NavBar(props) {
                     </Link>
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
+                    <Link className="links" to="/create-product">
+                      Create Listing
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
                     <Link className="links" to="/logout">
                       Logout
                     </Link>

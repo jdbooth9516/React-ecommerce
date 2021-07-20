@@ -49,10 +49,11 @@ export default function RegistrationForm() {
   }
 
   return (
-    <div className="registration-container">
+    <div>
       <div className="form-block">
         <form className="form-container" noValidate autoComplete="off">
           <div className="reg-form">
+            <h1>Register New Account</h1>
             <div className="form-item">
               <TextField
                 required={true}
