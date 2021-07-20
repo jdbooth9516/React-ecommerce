@@ -14,25 +14,35 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const ProductDetails = (props) => {
+
+  const category = props.categories.filter(c=> c.categoryId == props.product.categoryId).pop();
+  console.log(category);
+
   return (
     <div className="Product-container">
       <div className="main-body">
         <div className="text-container">
           <div>
-            <h1>{props.product[0].name}</h1>
+            <h1>{props.product.name}</h1>
           </div>
           <div>
-            <p>{props.product[0].discription}</p>
+            <h2>{props.product.discription}</h2>
+          </div>
+          <div>
+            <p>Category: {category.name}</p>
           </div>
         </div>
         <div className="buying">
           <div>
-            <h4 className="price">{props.product[0].price}</h4>
+            <h4 className="price">Price: ${props.product.price}</h4>
           </div>
           <div>
             <Button variant="outlined" color="primary">
               Add to Cart
             </Button>
+          </div>
+          <div>
+            <p>Avg Rating: {props.productAvgRating}</p>
           </div>
         </div>
       </div>
