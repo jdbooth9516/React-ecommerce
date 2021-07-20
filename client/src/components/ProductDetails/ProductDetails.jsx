@@ -1,9 +1,10 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import DisplayProductReviews from '../DisplayReviews/displayReviews';
-import AddRating from '../Rating/addRatingForm';
-import ReviewForm from '../DisplayReviews/reviewForm';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import DisplayProductReviews from "../DisplayReviews/displayReviews";
+import AddRating from "../Rating/addRatingForm";
+import ReviewForm from "../DisplayReviews/reviewForm";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,6 +13,27 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+function AddProductToCart(props) {
+  console.log(props);
+  async function sendProduct(props) {
+    const body = {
+      UserId: props.user.id,
+      ProductId: props.product[0].productId,
+    };
+    console.log(body);
+    try {
+      const response = await axios.post(
+        "https://localhost:44394/api/shoppingcart",
+        body
+      );
+      console.log(response);
+    } catch (error) {
+      console.error(error.resposne.data);
+    }
+  }
+  sendProduct(props);
+}
 
 export const ProductDetails = (props) => {
   return (
@@ -39,21 +61,31 @@ export const ProductDetails = (props) => {
 
       <div className="reviews">
         <div>
-            <div>
-                <h1>{props.product[0].name}</h1>
-            </div>
-            <div>
-                <p>{props.product[0].discription}</p>
-            </div>
-            <div> 
-                <h4>{props.product[0].price}</h4>
-            </div>
-            <Button variant="outlined" color="primary">
-        Add to Cart
-      </Button>
-      <AddRating productId={props.productId}/>
-      <ReviewForm productId={props.productId} getProductReviews={props.getProductReviews}/*userId={}*//>
-      <DisplayProductReviews productReviews={props.productReviews}/>
+          <div>
+            <h1>{props.product[0].name}</h1>
+          </div>
+          <div>
+            <p>{props.product[0].discription}</p>
+          </div>
+          <div>
+            <h4>{props.product[0].price}</h4>
+          </div>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => {
+              AddProductToCart(props);
+            }}
+          >
+            Add to Cart
+          </Button>
+          <AddRating productId={props.productId} />
+          <ReviewForm
+            productId={props.productId}
+            getProductReviews={props.getProductReviews}
+            userId={props.user.id}
+          />
+          <DisplayProductReviews productReviews={props.productReviews} />
         </div>
       </div>
     </div>

@@ -25,13 +25,19 @@ function App() {
     let response = await axios.get(`https://localhost:44394/api/products`);
     console.log(response.data);
     setProducts(response.data);
+
     getUserCart(user.id);
     getCategories();
+    console.log(user);
   }, [user]);
 
   useEffect(async () => {
     getProductReviews(productID);
   }, [productID]);
+
+  useEffect(async () => {
+    getUser();
+  }, []);
 
   const getUserCart = async (userId) => {
     let response = await axios.get(
@@ -40,10 +46,6 @@ function App() {
     console.log(response.data);
     setShoppingCart(response.data);
   };
-
-  // useEffect(async () => {
-  //   getUser();
-  // }, []);
 
   const getUser = async () => {
     const jwt = localStorage.getItem("token");
@@ -106,6 +108,7 @@ function App() {
               )}
               productId={productID}
               getProductReviews={getProductReviews}
+              user={user}
             />
           )}
         />
@@ -118,7 +121,6 @@ function App() {
         {/* <Route path="/logout" component={Logout} /> */}
         <Route
           path="/create-product"
-          /*will need to change auth to the users id once login works */
           render={(props) => <CreateProduct {...props} user={user} />}
         />
       </Switch>

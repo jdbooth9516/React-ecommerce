@@ -77,7 +77,7 @@ export default function NavBar(props) {
               }}
               onClose={handleClose}
             >
-              {!user ? (
+              {!user.name ? (
                 <div>
                   <MenuItem onClick={handleClose}>
                     <Link className="links" to="/register">
