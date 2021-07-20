@@ -108,6 +108,7 @@ function App() {
             <ProductDetails
               {...props}
               productReviews={productReviews}
+              user={user}
               product={products.filter(
                 (product) => product.productId == productID
               )}

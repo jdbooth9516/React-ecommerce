@@ -40,7 +40,7 @@ export const ProductDetails = (props) => {
       <div className="reviews">
         <div>
       <AddRating productId={props.productId}/>
-      <ReviewForm productId={props.productId} getProductReviews={props.getProductReviews}/*userId={}*//>
+      <ReviewForm productId={props.productId} getProductReviews={props.getProductReviews} user={props.user}/>
       <DisplayProductReviews productReviews={props.productReviews}/>
         </div>
       </div>

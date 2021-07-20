@@ -10,7 +10,7 @@ const ReviewForm = (props) => {
         const review = {
             userReview: values.userReview,
             productId: props.productId,
-            userId: "75a188ee-076f-4a8e-aa6e-250ab945eaa1"
+            userId: props.user.id
         }
         let response = await axios.post(`https://localhost:44394/api/reviews`, review);
         console.log(response.data);
