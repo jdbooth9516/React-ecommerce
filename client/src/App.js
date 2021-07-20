@@ -9,7 +9,7 @@ import { ProductDetails } from "./components/ProductDetails/ProductDetails";
 import Login from "./components/LogIn/logIn";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import DisplayProductsForSale from "./components/ProductsForSale/productsForSale";
-
+import Dashboard from './components/Dashboard/dashboard';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -33,6 +33,22 @@ function App() {
   useEffect(async()=>{
     getProductReviews(productID);
   },[productID]);
+
+  useEffect( async () => {
+    getUser();
+  }, [])
+
+  const getUser = async () => {
+    const jwt = localStorage.getItem('token');
+    try {
+      let response = await axios.get('https://localhost:44394/api/examples/user', { headers: { Authorization: 'Bearer ' + jwt }});
+      console.log(response.data);
+      setUser(user);
+    }
+    catch (error) {
+        console.log("There was an error in the USER GET request")
+    }
+  }
 
   const getUserCart = async (userId)=>{
     let response = await axios.get(`https://localhost:44394/api/shoppingcart/user/${userId}`);
@@ -63,6 +79,7 @@ function App() {
       <Route path="/cart" component={ShoppingCart}/>
       <Route path={"/product/" + productID} render={props => <ProductDetails {...props} productReviews={productReviews} product={products.filter(product=> product.productId == productID)}/>}/>
       <Route path="/login" component={Login}/>
+      <Route path="/dashboard" component={Dashboard}/>
      </Switch>
     </div>
   );

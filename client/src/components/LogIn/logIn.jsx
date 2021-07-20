@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import useForm from '../UseForm/useForm';
 import TextField from '@material-ui/core/TextField';
@@ -15,16 +16,45 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Login = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const classes = useStyles();
     const { values, handleChange, handleSubmit } = useForm(() => {logInUser(values)})
 
-    function logInUser(values) {
-        async function sendUserToHome(values) {
-            const response = await axios.post('https://localhost:44394/api/authentication/login')
-            console.log(values);
-            console.log(response);
+    async function logInUser(values) {
+        await getSetToken(values);
+        await getSetUser();
+
+        async function getSetToken(values) {
+            try {
+                console.log('Did we even make it here?')
+                const response = await axios.post('https://localhost:44394/api/authentication/login', values);
+                console.log(values);
+                console.log(response);
+    
+                const { token } = response.data;
+    
+                localStorage.setItem('token', token);
+                console.log(localStorage, "hit jwt");
+            }
+            catch (error) {
+                console.log("there was an error in the Token request")
+                console.error(error)
+            }
         }
-        sendUserToHome(values);
+
+        async function getSetUser() {
+            try {
+                const token = localStorage.getItem('token');
+                let response = await axios.get('https://localhost:44394/api/examples/user', { headers: { Authorization: 'Bearer ' + token }});
+                const { data } = response;
+                console.log('user data: ', data);
+                localStorage.setItem('user', data);
+                setIsLoggedIn(true);
+            } catch (err) {
+                console.log("there was an error in the User request");
+                console.error(err);
+            }
+        }
     }
 
     return (
@@ -44,6 +74,7 @@ const Login = () => {
                     values={values.password}
                     />
                     <Button onClick={handleSubmit}>Log In</Button>
+                    {isLoggedIn ? <Redirect to="/dashboard" /> : null}
                 </div>
             </form>
         </container>
