@@ -11,6 +11,7 @@ import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import DisplayProductsForSale from "./components/ProductsForSale/productsForSale";
 import Dashboard from "./components/Dashboard/dashboard";
 import { CreateProduct } from "./components/CreateProduct/CreateProduct";
+import Logout from "./components/Logout/logout";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -29,6 +30,9 @@ function App() {
     getCategories();
   }, [user]);
 
+  console.log(user);
+  console.log(user.id);
+
   useEffect(async () => {
     getProductReviews(productID);
   }, [productID]);
@@ -41,9 +45,9 @@ function App() {
     setShoppingCart(response.data);
   };
 
-  // useEffect(async () => {
-  //   getUser();
-  // }, []);
+  useEffect(async () => {
+    getUser();
+  }, []);
 
   const getUser = async () => {
     const jwt = localStorage.getItem("token");
@@ -115,7 +119,7 @@ function App() {
         />
         <Route path="/dashboard" component={Dashboard} />
         {/* need to create the logout function still */}
-        {/* <Route path="/logout" component={Logout} /> */}
+        <Route path="/logout" component={Logout} />
         <Route
           path="/create-product"
           /*will need to change auth to the users id once login works */
