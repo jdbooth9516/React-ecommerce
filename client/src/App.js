@@ -86,10 +86,10 @@ function App() {
         {/* <Route path="/logout" component={Logout} /> */}
         <Route
           path="/create-product"
+          /*will need to change auth to the users id once login works */
           render={(props) => <CreateProduct {...props} user={auth} />}
         />
       </Switch>
-      <Switch></Switch>
     </div>
   );
 }

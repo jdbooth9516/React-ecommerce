@@ -1,0 +1,32 @@
+.Product-container {
+  display: flex;
+  flex-direction: column;
+  margin: 5vh 3vw 5vh 3vw;
+}
+
+.main-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5vh 3vw 5vh 3vw;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10vw;
+}
+
+.buying {
+  margin-right: 10vw;
+}
+
+.price {
+  font-size: 2em;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
