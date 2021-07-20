@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import DisplayProductReviews from '../DisplayReviews/displayReviews';
 import AddRating from '../Rating/addRatingForm';
+import ReviewForm from '../DisplayReviews/reviewForm';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,6 +31,7 @@ export const ProductDetails = (props) => {
         Add to Cart
       </Button>
       <AddRating productId={props.productId}/>
+      <ReviewForm productId={props.productId} getProductReviews={props.getProductReviews}/*userId={}*//>
       <DisplayProductReviews productReviews={props.productReviews}/>
         </div>
     )
