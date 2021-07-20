@@ -9,7 +9,7 @@ function AddProductToCart(props) {
   async function sendProduct(props) {
     const body = {
       UserId: props.user.id,
-      ProductId: props.product[0].productId,
+      ProductId: props.product.productId,
     };
     try {
       const response = await axios.post(
