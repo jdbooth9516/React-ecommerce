@@ -30,6 +30,10 @@ function App() {
   }, [user]);
 
   useEffect(async () => {
+    getUserCart(user.id);
+  },[ShoppingCart])
+
+  useEffect(async () => {
     getProductReviews(productID);
   }, [productID]);
 
@@ -100,6 +104,7 @@ function App() {
             <ShoppingCart
               {...props}
               component={ShoppingCart}
+              products={products}
               shoppingCart={shoppingCart}/>
           )} />
         <Route
