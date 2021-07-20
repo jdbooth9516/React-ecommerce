@@ -14,7 +14,7 @@ const Logout = () => {
     }
   };
 
-  return <Redirect to="/dashboard" {...logoutUser()} />;
+  return <Redirect to="/login" {...logoutUser()} />;
 };
 
 export default Logout;

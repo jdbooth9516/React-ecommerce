@@ -84,7 +84,7 @@ const Login = (props) => {
             values={values.password}
           />
           <Button onClick={handleSubmit}>Log In</Button>
-          {isLoggedIn ? <Redirect to="/dashboard" /> : null}
+          {isLoggedIn ? <Redirect to="/allProducts" /> : null}
         </div>
       </form>
     </container>
