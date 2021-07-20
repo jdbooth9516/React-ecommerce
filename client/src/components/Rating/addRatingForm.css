@@ -1,0 +1,19 @@
+.rating-dropdown {
+  background-color: aliceblue;
+  color: rgb(73, 73, 73);
+}
+
+.search-form {
+  background-color: aliceblue;
+  color: rgb(73, 73, 73);
+}
+
+.rating-dropdown-label {
+  background-color: rgb(255, 253, 253);
+  color: rgb(73, 73, 73);
+  margin: 0 3vw;
+}
+
+.selection {
+  margin: 0 1vw;
+}

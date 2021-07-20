@@ -9,7 +9,7 @@ import { ProductDetails } from "./components/ProductDetails/ProductDetails";
 import Login from "./components/LogIn/logIn";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import DisplayProductsForSale from "./components/ProductsForSale/productsForSale";
-import Dashboard from './components/Dashboard/dashboard';
+import Dashboard from "./components/Dashboard/dashboard";
 import { CreateProduct } from "./components/CreateProduct/CreateProduct";
 
 function App() {
@@ -18,8 +18,7 @@ function App() {
   const [productReviews, setProductReviews] = useState([]);
   const [allProducts, setAllProducts] = useState(true);
   const [shoppingCart, setShoppingCart] = useState([]);
-  const [user, setUser] = useState([]);
-  const [auth, setAuth] = useState("013cc3ef-0606-4962-bb2b-09fc93a39015");
+  const [user, setUser] = useState({});
 
   useEffect(async () => {
     let response = await axios.get(`https://localhost:44394/api/products`);
@@ -39,22 +38,24 @@ function App() {
     console.log(response.data);
     setShoppingCart(response.data);
   };
-  
-  useEffect( async () => {
-    getUser();
-  }, []);
+
+  // useEffect(async () => {
+  //   getUser();
+  // }, []);
 
   const getUser = async () => {
-    const jwt = localStorage.getItem('token');
+    const jwt = localStorage.getItem("token");
     try {
-      let response = await axios.get('https://localhost:44394/api/examples/user', { headers: { Authorization: 'Bearer ' + jwt }});
+      let response = await axios.get(
+        "https://localhost:44394/api/examples/user",
+        { headers: { Authorization: "Bearer " + jwt } }
+      );
       console.log(response.data);
-      setUser(user);
+      setUser(response.data);
+    } catch (error) {
+      console.log("There was an error in the USER GET request");
     }
-    catch (error) {
-        console.log("There was an error in the USER GET request")
-    }
-  }
+  };
 
   const getProductReviews = async (productId) => {
     let response = await axios.get(
@@ -74,7 +75,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar searchProducts={searchProducts} auth={auth} user={user} />
+      <NavBar searchProducts={searchProducts} user={user} />
       {allProducts ? (
         <DisplayProducts
           products={products}
@@ -99,14 +100,17 @@ function App() {
             />
           )}
         />
-        <Route path="/login" component={Login} />
-        <Route path="/dashboard" component={Dashboard}/>
+        <Route
+          path="/login"
+          render={(props) => <Login {...props} getUser={getUser} />}
+        />
+        <Route path="/dashboard" component={Dashboard} />
         {/* need to create the logout function still */}
         {/* <Route path="/logout" component={Logout} /> */}
         <Route
           path="/create-product"
           /*will need to change auth to the users id once login works */
-          render={(props) => <CreateProduct {...props} user={auth} />}
+          render={(props) => <CreateProduct {...props} user={user} />}
         />
       </Switch>
     </div>

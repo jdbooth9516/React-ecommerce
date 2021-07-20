@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBar(props) {
   const classes = useStyles();
-  const auth = props.auth;
+  const user = props.user;
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleMenu = () => {
@@ -77,7 +77,7 @@ export default function NavBar(props) {
               }}
               onClose={handleClose}
             >
-              {!auth ? (
+              {!user ? (
                 <div>
                   <MenuItem onClick={handleClose}>
                     <Link className="links" to="/register">

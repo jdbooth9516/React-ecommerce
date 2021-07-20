@@ -15,7 +15,7 @@ export const CreateProduct = (props) => {
       const cat = parseInt(values.CategoryId);
       values.Price = price;
       values.CategoryId = cat;
-      values.UserId = props.user;
+      values.UserId = props.user.id;
       console.log(values);
       try {
         const response = await axios.post(
@@ -26,7 +26,7 @@ export const CreateProduct = (props) => {
       } catch (error) {
         console.error(error.response.data);
       }
-      window.location.href = "/";
+      // window.location.href = "/";
     }
     addProductToDatabase(values);
   }
@@ -94,7 +94,7 @@ export const CreateProduct = (props) => {
               id="outlined-read-only-input"
               label="UserId"
               name="UserId"
-              defaultValue="hiddend"
+              defaultValue=" "
               variant="outlined"
               onChange={handleChange}
               value={values.UserId}
