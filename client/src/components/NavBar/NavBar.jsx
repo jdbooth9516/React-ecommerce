@@ -115,7 +115,7 @@ export default function NavBar(props) {
             <button
               className="logo"
               onClick={() => {
-                window.location = "/";
+                window.location = "/allProducts";
               }}
             >
               Beard Care

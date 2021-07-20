@@ -1,18 +1,15 @@
-import { useRadioGroup } from "@material-ui/core";
-import axios from "axios";
 import React from "react";
 
 const ShoppingCart = (props) => {
-  console.log(props);
   if (props.shoppingCart.length > 0) {
     let priceTotal = 0;
     var products = [];
     for (var i = 0; i < props.shoppingCart.length; i++) {
-      console.log(props.shoppingCart[i]);
-      const cartProduct = props.products.filter(product=> product.productId == props.shoppingCart[i].productId);
+      const cartProduct = props.products.filter(
+        (product) => product.productId == props.shoppingCart[i].productId
+      );
       priceTotal += cartProduct[0].price;
       products.push(cartProduct.pop());
-      console.log(products);
     }
     const productsInCart = products.map((product) => (
       <div>
@@ -22,7 +19,9 @@ const ShoppingCart = (props) => {
     ));
     return (
       <div>
-          <div><h1>{props.user.userName}'s Shopping Cart</h1></div>
+        <div>
+          <h1>{props.user.userName}'s Shopping Cart</h1>
+        </div>
         <div>{productsInCart}</div>
         <div>Total Cost: ${priceTotal}</div>
       </div>

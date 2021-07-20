@@ -1,26 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import useForm from "../UseForm/useForm";
 import TextField from "@material-ui/core/TextField";
-import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import PasswordField from "material-ui-password-field";
 import "./RegistrationForm.css";
 
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//       '& .MuiTextField-root': {
-//         margin: theme.spacing(1),
-//         width: '25ch',
-//         display: 'flex',
-//         flexDirection: 'column',
-//         justifyContent: 'center',
-//       },
-//     },
-//   }));
-
 export default function RegistrationForm() {
-  // const classes = useStyles();
   const { values, handleChange, handleSubmit } = useForm(() => {
     registerUser(values);
   });
@@ -28,7 +14,6 @@ export default function RegistrationForm() {
   function registerUser(values) {
     async function addUserToDatabase(values) {
       try {
-        console.log(values);
         const response = await axios.post(
           "https://localhost:44394/api/authentication",
           values
@@ -37,7 +22,6 @@ export default function RegistrationForm() {
       } catch (error) {
         const response = error.response.data;
         if (response.DuplicateUserName) {
-          console.log(response);
           alert(response.DuplicateUserName[0]);
         } else {
           alert("One or more field are missing or incomplete plese try again");

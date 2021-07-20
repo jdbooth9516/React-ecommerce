@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useForm from "../UseForm/useForm";
 import axios from "axios";
 import "./addRatingForm.css";
@@ -12,12 +12,10 @@ const AddRating = (props) => {
         userId: "75a188ee-076f-4a8e-aa6e-250ab945eaa1",
         //using hard coded userId for test
       };
-      console.log(rating);
       let response = await axios.post(
         `https://localhost:44394/api/ratings`,
         rating
       );
-      console.log(response.data);
       alert(`Successfully rated as ${values.userRating}`);
     } else {
       const rating = {
@@ -26,12 +24,10 @@ const AddRating = (props) => {
         userId: "75a188ee-076f-4a8e-aa6e-250ab945eaa1",
         //using hard coded userId for test
       };
-      console.log(rating);
       let response = await axios.post(
         `https://localhost:44394/api/ratings`,
         rating
       );
-      console.log(response.data);
       alert(`Successfully rated as 1`);
     }
   };

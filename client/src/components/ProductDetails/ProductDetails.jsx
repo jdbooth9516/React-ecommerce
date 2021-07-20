@@ -1,33 +1,21 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import DisplayProductReviews from "../DisplayReviews/displayReviews";
 import AddRating from "../Rating/addRatingForm";
 import ReviewForm from "../DisplayReviews/reviewForm";
 import axios from "axios";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-}));
-
 function AddProductToCart(props) {
-  console.log(props);
   async function sendProduct(props) {
     const body = {
       UserId: props.user.id,
       ProductId: props.product[0].productId,
     };
-    console.log(body);
     try {
       const response = await axios.post(
         "https://localhost:44394/api/shoppingcart",
         body
       );
-      console.log(response);
       window.location.href = "/cart";
     } catch (error) {
       console.error(error.resposne.data);

@@ -23,16 +23,10 @@ function App() {
 
   useEffect(async () => {
     let response = await axios.get(`https://localhost:44394/api/products`);
-    console.log(response.data);
     setProducts(response.data);
-
     getUserCart(user.id);
     getCategories();
-    console.log(user);
   }, [user]);
-
-  console.log(user);
-  console.log(user.id);
 
   useEffect(async () => {
     getUserCart(user.id);
@@ -46,7 +40,6 @@ function App() {
     let response = await axios.get(
       `https://localhost:44394/api/shoppingcart/user/${userId}`
     );
-    console.log(response.data);
     setShoppingCart(response.data);
   };
 
@@ -58,23 +51,20 @@ function App() {
   // get the information from the token so the site know which users is logged in
   const getUser = async () => {
     const jwt = localStorage.getItem("token");
-    console.log(jwt);
     try {
       let response = await axios.get(
         "https://localhost:44394/api/examples/user",
         { headers: { Authorization: "Bearer " + jwt } }
       );
-      console.log(response.data);
       setUser(response.data);
     } catch (error) {
-      console.log("There was an error in the USER GET request");
+      console.error("There was an error in the USER GET request");
     }
   };
 
   // gets the total number of categories
   const getCategories = async () => {
     let response = await axios.get(`https://localhost:44394/api/categories`);
-    console.log(response.data);
     setCategories(response.data);
   };
 
@@ -83,7 +73,6 @@ function App() {
     let response = await axios.get(
       `https://localhost:44394/api/reviews/product/${productId}`
     );
-    console.log(response.data);
     setProductReviews(response.data);
   };
 
@@ -92,7 +81,6 @@ function App() {
     let response = await axios.get(
       `https://localhost:44394/api/products/search/${searchInput}`
     );
-    console.log(response.data);
     setProducts(response.data);
   };
 
