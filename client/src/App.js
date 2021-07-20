@@ -20,6 +20,7 @@ function App() {
   const [shoppingCart, setShoppingCart] = useState([]);
   const [user, setUser] = useState({});
   const [categories, setCategories] = useState([]);
+  const [productAvgRating, setProductAvgRating] = useState([]);
 
   useEffect(async () => {
     let response = await axios.get(`https://localhost:44394/api/products`);
@@ -34,6 +35,7 @@ function App() {
 
   useEffect(async () => {
     getProductReviews(productID);
+    getAvgRating(productID);
   }, [productID]);
 
   const getUserCart = async (userId) => {
@@ -42,6 +44,25 @@ function App() {
     );
     setShoppingCart(response.data);
   };
+
+  const getAvgRating = async (productId) => {
+    let response = await axios.get(`https://localhost:44394/api/ratings/${productId}`);
+    console.log(response.data);
+    var sumRating = 0;
+    var denom = 0;
+    response.data.map((rating, index)=>{
+      sumRating += rating.userRating;
+      denom = index + 1;
+    });
+    const avgRating = sumRating/denom;
+    const normAvgRating = avgRating.toFixed(1);
+    console.log(avgRating);
+    if(isNaN(avgRating)){
+      setProductAvgRating(0);
+    }else{
+      setProductAvgRating(normAvgRating);
+    }
+  }
 
   useEffect(async () => {
     getUser();
@@ -119,9 +140,11 @@ function App() {
               {...props}
               productReviews={productReviews}
               user={user}
+              categories={categories}
               product={products.filter(
                 (product) => product.productId == productID
-              )}
+              ).pop()}
+              productAvgRating={productAvgRating}
               productId={productID}
               getProductReviews={getProductReviews}
             />
