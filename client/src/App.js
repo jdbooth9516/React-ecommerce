@@ -108,6 +108,7 @@ function App() {
             <ShoppingCart
               {...props}
               component={ShoppingCart}
+              user={user}
               products={products}
               shoppingCart={shoppingCart}/>
           )} />

@@ -1,3 +1,4 @@
+import { useRadioGroup } from "@material-ui/core";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
@@ -20,6 +21,7 @@ const ShoppingCart = (props) => {
     ));
     return (
       <div>
+          <div><h1>{props.user.userName}'s Shopping Cart</h1></div>
         <div>{productsInCart}</div>
         <div>Total Cost: ${priceTotal}</div>
       </div>
