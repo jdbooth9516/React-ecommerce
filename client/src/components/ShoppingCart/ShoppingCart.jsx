@@ -1,6 +1,21 @@
 import React from "react";
+import axios from "axios";
 
 const ShoppingCart = (props) => {
+  function removeItem(id) {
+    async function pullItemFromCart(id) {
+      try {
+        const response = await axios.delete(
+          `https://localhost:44394/api/shoppingcart/${id}`
+        );
+        window.location.href = "/cart";
+      } catch (error) {
+        console.error(error.response.data);
+      }
+    }
+    pullItemFromCart(id);
+  }
+
   if (props.shoppingCart.length > 0) {
     let priceTotal = 0;
     var products = [];
@@ -15,8 +30,17 @@ const ShoppingCart = (props) => {
       <div>
         <h1>{product.name}</h1>
         <h2>{product.price}</h2>
+        <button
+          className="delete item"
+          onClick={() => {
+            removeItem(product.productId);
+          }}
+        >
+          Remove
+        </button>
       </div>
     ));
+
     return (
       <div>
         <div>

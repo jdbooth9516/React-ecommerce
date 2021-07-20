@@ -4,7 +4,7 @@ import DisplayProductReviews from "../DisplayReviews/displayReviews";
 import AddRating from "../Rating/addRatingForm";
 import ReviewForm from "../DisplayReviews/reviewForm";
 import axios from "axios";
-import './ProductDetails.css';
+import "./ProductDetails.css";
 
 function AddProductToCart(props) {
   async function sendProduct(props) {
@@ -26,8 +26,9 @@ function AddProductToCart(props) {
 }
 
 export const ProductDetails = (props) => {
-
-  const category = props.categories.filter(c=> c.categoryId == props.product.categoryId).pop();
+  const category = props.categories
+    .filter((c) => c.categoryId == props.product.categoryId)
+    .pop();
   console.log(category);
 
   return (
@@ -64,7 +65,9 @@ export const ProductDetails = (props) => {
       </div>
 
       <div>
-        <div><AddRating productId={props.productId} /></div>
+        <div>
+          <AddRating productId={props.productId} />
+        </div>
         <div className="reviews">
           <ReviewForm
             productId={props.productId}
