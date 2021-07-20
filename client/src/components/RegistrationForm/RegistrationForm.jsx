@@ -33,20 +33,27 @@ export default function RegistrationForm() {
           "https://localhost:44394/api/authentication",
           values
         );
-        console.log(response);
-        window.location = "/";
+        window.location.href = "/login";
       } catch (error) {
-        console.log(error);
+        const response = error.response.data;
+        if (response.DuplicateUserName) {
+          console.log(response);
+          alert(response.DuplicateUserName[0]);
+        } else {
+          alert("One or more field are missing or incomplete plese try again");
+        }
+        window.location.href = "/register";
       }
     }
     addUserToDatabase(values);
   }
 
   return (
-    <div className="registration-container">
+    <div>
       <div className="form-block">
-        <form className="form-container" autoComplete="off">
+        <form className="form-container" noValidate autoComplete="off">
           <div className="reg-form">
+            <h1>Register New Account</h1>
             <div className="form-item">
               <TextField
                 required={true}
@@ -122,7 +129,7 @@ export default function RegistrationForm() {
               />
             </div>
             <div>
-              <Button onClick={handleSubmit}> Sumbit</Button>
+              <Button onClick={handleSubmit}>Submit</Button>
             </div>
           </div>
         </form>
