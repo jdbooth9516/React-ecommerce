@@ -11,6 +11,7 @@ import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import DisplayProductsForSale from "./components/ProductsForSale/productsForSale";
 import Dashboard from "./components/Dashboard/dashboard";
 import { CreateProduct } from "./components/CreateProduct/CreateProduct";
+import Logout from "./components/Logout/logout";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -30,6 +31,9 @@ function App() {
     getCategories();
     console.log(user);
   }, [user]);
+
+  console.log(user);
+  console.log(user.id);
 
   useEffect(async () => {
     getProductReviews(productID);
@@ -129,7 +133,7 @@ function App() {
         />
         <Route path="/dashboard" component={Dashboard} />
         {/* need to create the logout function still */}
-        {/* <Route path="/logout" component={Logout} /> */}
+        <Route path="/logout" component={Logout} />
         <Route
           path="/create-product"
           render={(props) => <CreateProduct {...props} user={user} />}
