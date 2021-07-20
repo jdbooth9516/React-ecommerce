@@ -1,9 +1,10 @@
 import React from "react";
+import './displayReviews.css';
 
 const DisplayProductReviews = (props) => {
   if (props.productReviews.length > 0) {
     const reviews = props.productReviews.map((review) => (
-      <div>
+      <div className="reviews">
         <div>
           <p>User {review.userId} review:</p>
         </div>
@@ -12,7 +13,7 @@ const DisplayProductReviews = (props) => {
         </div>
       </div>
     ));
-    return <div>{reviews}</div>;
+    return <div className="review-container">{reviews}</div>;
   } else {
     return (
       <div>

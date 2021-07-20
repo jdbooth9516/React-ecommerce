@@ -4,6 +4,7 @@ import DisplayProductReviews from "../DisplayReviews/displayReviews";
 import AddRating from "../Rating/addRatingForm";
 import ReviewForm from "../DisplayReviews/reviewForm";
 import axios from "axios";
+import './ProductDetails.css';
 
 function AddProductToCart(props) {
   async function sendProduct(props) {
@@ -45,7 +46,7 @@ export const ProductDetails = (props) => {
         </div>
         <div className="buying">
           <div>
-            <h4 className="price">Price: ${props.product.price}</h4>
+            <h3 className="price">Price: ${props.product.price}</h3>
           </div>
           <div>
             <Button
@@ -62,9 +63,9 @@ export const ProductDetails = (props) => {
         </div>
       </div>
 
-      <div className="reviews">
-        <div>
-          <AddRating productId={props.productId} />
+      <div>
+        <div><AddRating productId={props.productId} /></div>
+        <div className="reviews">
           <ReviewForm
             productId={props.productId}
             getProductReviews={props.getProductReviews}

@@ -7,7 +7,7 @@
 
 .main-body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   margin: 5vh 3vw 5vh 3vw;
   padding-bottom: 5vh;
@@ -15,22 +15,22 @@
 }
 
 .text-container {
-  display: flex;
+  display: block;
   flex-direction: column;
-  margin-left: 10vw;
+  margin-left: 0vw;
 }
 
 .buying {
-  margin-right: 10vw;
+  margin-right: 0vw;
 }
 
 .price {
-  font-size: 2em;
+  font-size: 1.1em;
 }
 
 .reviews {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   margin: 5vh 10vw 5vh 10vw;
   border: solid black 2px;

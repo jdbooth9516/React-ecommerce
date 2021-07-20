@@ -1,0 +1,38 @@
+.review-container {
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 3vw 5vh 3vw;
+    padding: 2vh 2vw;
+  }
+  
+  .main-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5vh 3vw 5vh 3vw;
+    padding-bottom: 5vh;
+    border-bottom: rgb(63, 63, 63) 2px solid;
+  }
+  
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10vw;
+  }
+  
+  .buying {
+    margin-right: 10vw;
+  }
+  
+  .price {
+    font-size: 2em;
+  }
+  
+  .reviews {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 2vh 2vw 2vh 2vw;
+    border: solid black 2px;
+  }
+  
