@@ -17,7 +17,6 @@ function App() {
   const [products, setProducts] = useState([]);
   const [productID, setProductId] = useState(10);
   const [productReviews, setProductReviews] = useState([]);
-  const [allProducts, setAllProducts] = useState(true);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [user, setUser] = useState({});
   const [categories, setCategories] = useState([]);
@@ -36,6 +35,10 @@ function App() {
   console.log(user.id);
 
   useEffect(async () => {
+    getUserCart(user.id);
+  }, [ShoppingCart]);
+
+  useEffect(async () => {
     getProductReviews(productID);
   }, [productID]);
 
@@ -49,8 +52,10 @@ function App() {
 
   useEffect(async () => {
     getUser();
+    <Redirect to="/allProducts" />;
   }, []);
 
+  // get the information from the token so the site know which users is logged in
   const getUser = async () => {
     const jwt = localStorage.getItem("token");
     console.log(jwt);
@@ -66,12 +71,14 @@ function App() {
     }
   };
 
+  // gets the total number of categories
   const getCategories = async () => {
     let response = await axios.get(`https://localhost:44394/api/categories`);
     console.log(response.data);
     setCategories(response.data);
   };
 
+  // finds the reviews for a product
   const getProductReviews = async (productId) => {
     let response = await axios.get(
       `https://localhost:44394/api/reviews/product/${productId}`
@@ -80,6 +87,7 @@ function App() {
     setProductReviews(response.data);
   };
 
+  // Search function
   const searchProducts = async (searchInput) => {
     let response = await axios.get(
       `https://localhost:44394/api/products/search/${searchInput}`
@@ -91,15 +99,18 @@ function App() {
   return (
     <div className="App">
       <NavBar searchProducts={searchProducts} user={user} />
-      {allProducts ? (
-        <DisplayProducts
-          products={products}
-          setAll={setAllProducts}
-          setProductId={setProductId}
-        />
-      ) : null}
       {/* links to other pages inside of switch    */}
       <Switch>
+        <Route
+          path="/allProducts"
+          render={(props) => (
+            <DisplayProducts
+              {...props}
+              products={products}
+              setProductId={setProductId}
+            />
+          )}
+        />
         <Route path="/register" component={RegistrationForm} />
         <Route
           path="/cart"
@@ -107,6 +118,7 @@ function App() {
             <ShoppingCart
               {...props}
               component={ShoppingCart}
+              products={products}
               shoppingCart={shoppingCart}
             />
           )}
@@ -123,7 +135,6 @@ function App() {
               )}
               productId={productID}
               getProductReviews={getProductReviews}
-              user={user}
             />
           )}
         />
@@ -132,7 +143,6 @@ function App() {
           render={(props) => <Login {...props} getUser={getUser} />}
         />
         <Route path="/dashboard" component={Dashboard} />
-        {/* need to create the logout function still */}
         <Route path="/logout" component={Logout} />
         <Route
           path="/create-product"

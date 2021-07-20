@@ -5,11 +5,15 @@ const ShoppingCart = (props) => {
   console.log(props);
   if (props.shoppingCart.length > 0) {
     let priceTotal = 0;
+    var products = [];
     for (var i = 0; i < props.shoppingCart.length; i++) {
       console.log(props.shoppingCart[i]);
-      priceTotal += props.shoppingCart[i].price;
+      const cartProduct = props.products.filter(product=> product.productId == props.shoppingCart[i].productId);
+      priceTotal += cartProduct[0].price;
+      products.push(cartProduct.pop());
+      console.log(products);
     }
-    const productsInCart = props.shoppingCart.map((product) => (
+    const productsInCart = products.map((product) => (
       <div>
         <h1>{product.name}</h1>
         <h2>{product.price}</h2>

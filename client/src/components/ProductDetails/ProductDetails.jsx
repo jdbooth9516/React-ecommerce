@@ -28,6 +28,7 @@ function AddProductToCart(props) {
         body
       );
       console.log(response);
+      window.location.href = "/cart";
     } catch (error) {
       console.error(error.resposne.data);
     }
@@ -52,7 +53,11 @@ export const ProductDetails = (props) => {
             <h4 className="price">{props.product[0].price}</h4>
           </div>
           <div>
-            <Button variant="outlined" color="primary">
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => AddProductToCart(props)}
+            >
               Add to Cart
             </Button>
           </div>
