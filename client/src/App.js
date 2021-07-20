@@ -19,12 +19,14 @@ function App() {
   const [allProducts, setAllProducts] = useState(true);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [user, setUser] = useState({});
+  const [categories, setCategories] = useState([]);
 
   useEffect(async () => {
     let response = await axios.get(`https://localhost:44394/api/products`);
     console.log(response.data);
     setProducts(response.data);
     getUserCart(user.id);
+    getCategories();
   }, [user]);
 
   useEffect(async () => {
@@ -55,6 +57,12 @@ function App() {
     } catch (error) {
       console.log("There was an error in the USER GET request");
     }
+  };
+
+  const getCategories = async () => {
+    let response = await axios.get(`https://localhost:44394/api/categories`);
+    console.log(response.data);
+    setCategories(response.data);
   };
 
   const getProductReviews = async (productId) => {
@@ -97,6 +105,7 @@ function App() {
                 (product) => product.productId == productID
               )}
               productId={productID}
+              getProductReviews={getProductReviews}
             />
           )}
         />
