@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "./DisplayCategory.css";
 
 const DisplayCategory = (props) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -28,6 +29,7 @@ const DisplayCategory = (props) => {
       onClick={() => {
         props.setProductId(product.productId);
       }}
+      className="product-card"
     >
       <Link className="links" to={"/product/" + product.productId}>
         <h1>{product.name}</h1>
@@ -41,9 +43,13 @@ const DisplayCategory = (props) => {
   );
 
   return (
-    <div>
+    <div className="main-products-container">
       <h2>{currentCategory[0].name}</h2>
-      <div>{display}</div>
+      <div>
+        <div className="products-body">
+          <div className="products-container-cat">{display}</div>
+        </div>
+      </div>
     </div>
   );
 };
