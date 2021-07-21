@@ -1,0 +1,32 @@
+.cart-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: white;
+  min-width: 50vw;
+  max-width: 65vw;
+  margin: 1vh 1vw;
+}
+
+.cart-title {
+  margin: 0 2vw;
+}
+
+.cart-price {
+  margin: 1vh 2vw;
+}
+
+.delete-item {
+  max-height: 3vh;
+  margin: 3vh 0 0 2vw;
+  border: rgba(255, 0, 0, 0.596) 1px solid;
+  color: red;
+  background-color: white;
+}

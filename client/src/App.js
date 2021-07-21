@@ -13,6 +13,7 @@ import Dashboard from "./components/Dashboard/dashboard";
 import { CreateProduct } from "./components/CreateProduct/CreateProduct";
 import Logout from "./components/Logout/logout";
 import "./App.css";
+import { LaptopWindowsOutlined } from "@material-ui/icons";
 
 function App() {
   const [products, setProducts] = useState([]);

@@ -69,26 +69,28 @@ const Login = (props) => {
   return (
     <container className="login-container" maxWidth="sm">
       <h2>Log In</h2>
-      <form className={classes.root}>
-        <div className="login-form">
-          <TextField
-            id="standard-basic"
-            label="Username"
-            name="username"
-            onChange={handleChange}
-            values={values.userId}
-          />
-          <TextField
-            id="standard-basic"
-            label="Password"
-            name="password"
-            onChange={handleChange}
-            values={values.password}
-          />
-          <Button onClick={handleSubmit}>Log In</Button>
-          {isLoggedIn ? <Redirect to="/allProducts" /> : null}
-        </div>
-      </form>
+      <div className="field-box">
+        <form className={classes.root}>
+          <div className="login-form">
+            <TextField
+              id="standard-basic"
+              label="Username"
+              name="username"
+              onChange={handleChange}
+              values={values.userId}
+            />
+            <TextField
+              id="standard-basic"
+              label="Password"
+              name="password"
+              onChange={handleChange}
+              values={values.password}
+            />
+            <Button onClick={handleSubmit}>Log In</Button>
+            {isLoggedIn ? <Redirect to="/allProducts" /> : null}
+          </div>
+        </form>
+      </div>
     </container>
   );
 };

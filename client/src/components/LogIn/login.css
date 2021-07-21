@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+.field-box {
+  overflow: hidden;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;
