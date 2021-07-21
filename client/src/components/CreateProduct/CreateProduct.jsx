@@ -26,7 +26,7 @@ export const CreateProduct = (props) => {
       } catch (error) {
         console.error(error.response.data);
       }
-      window.location.href = "/";
+      window.location.href = "/allProducts";
     }
     addProductToDatabase(values);
   }

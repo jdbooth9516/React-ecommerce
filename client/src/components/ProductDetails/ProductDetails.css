@@ -35,11 +35,13 @@
   font-size: 1.1em;
 }
 
-.add-btn {
-  max-height: 8vh;
-}
-.MuiButton-outlined {
+.MuiButton-outlinedPrimary {
   padding: 0;
+  max-height: 4vh;
+}
+
+.MuiButton-label {
+  padding-bottom: 1em;
 }
 
 .reviews-container {
