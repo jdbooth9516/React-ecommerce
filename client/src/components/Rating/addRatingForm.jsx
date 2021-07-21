@@ -15,6 +15,7 @@ const AddRating = (props) => {
         `https://localhost:44394/api/ratings`,
         rating
       );
+      props.getAvgRating(props.productId);
       alert(`Successfully rated as ${values.userRating}`);
     } else {
       const rating = {

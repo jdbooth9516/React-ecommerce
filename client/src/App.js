@@ -169,6 +169,7 @@ function App() {
               productAvgRating={productAvgRating}
               productId={productID}
               getProductReviews={getProductReviews}
+              getAvgRating={getAvgRating}
             />
           )}
         />

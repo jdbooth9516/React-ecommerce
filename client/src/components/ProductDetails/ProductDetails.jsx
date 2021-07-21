@@ -51,24 +51,27 @@ export const ProductDetails = (props) => {
             <h3 className="price">Price: ${props.product.price}</h3>
           </div>
           <div className="add-btn">
-          {!user.firstName ? (
+            {!user.firstName ? (
               <div />
-              ) : (
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => AddProductToCart(props)}
-            >
-              Add to Cart
-            </Button>
-              )}
+            ) : (
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={() => AddProductToCart(props)}
+              >
+                Add to Cart
+              </Button>
+            )}
           </div>
         </div>
       </div>
 
       <div className="reviews-container">
         <div className="rating">
-          <AddRating productId={props.productId} />
+          <AddRating
+            productId={props.productId}
+            getAvgRating={props.getAvgRating}
+          />
         </div>
         <div className="reviews">
           <ReviewForm
