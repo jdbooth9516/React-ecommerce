@@ -44,6 +44,7 @@ function App() {
     let response = await axios.get(
       `https://localhost:44394/api/shoppingcart/user/${userId}`
     );
+    console.log(response.data);
     setShoppingCart(response.data);
   };
 

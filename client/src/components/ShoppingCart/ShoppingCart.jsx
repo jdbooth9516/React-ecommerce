@@ -26,14 +26,14 @@ const ShoppingCart = (props) => {
       priceTotal += cartProduct[0].price;
       products.push(cartProduct.pop());
     }
-    const productsInCart = products.map((product) => (
+    const productsInCart = products.map((product, index) => (
       <div>
         <h1>{product.name}</h1>
         <h2>{product.price}</h2>
         <button
           className="delete item"
           onClick={() => {
-            removeItem(product.productId);
+            removeItem(props.shoppingCart[index].shoppingCartId);
           }}
         >
           Remove
