@@ -115,7 +115,7 @@ function App() {
   return (
     <div className="App">
       <NavBar searchProducts={searchProducts} user={user} />
-      <Redirect to="/allProducts" />
+      {/* <Redirect to="/allProducts" /> */}
       {/* links to other pages inside of switch    */}
       <Switch>
         <Route

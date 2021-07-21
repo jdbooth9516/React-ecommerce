@@ -16,7 +16,6 @@ const AddRating = (props) => {
         rating
       );
       alert(`Successfully rated as ${values.userRating}`);
-      window.location.href = `/products/${props.productId}`;
     } else {
       const rating = {
         userRating: 1,

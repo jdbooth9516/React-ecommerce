@@ -104,7 +104,7 @@ export const CreateProduct = (props) => {
             <TextField
               required={true}
               id="outlined-required"
-              label="CategoryId"
+              label="CategoryId 1=styling 2=tools"
               name="CategoryId"
               type="number"
               defaultValue=""
