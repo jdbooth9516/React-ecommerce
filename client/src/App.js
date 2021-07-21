@@ -11,9 +11,7 @@ import DisplayCategory from "./components/displayCategory/DisplayCategory";
 import DisplayProductsForSale from "./components/ProductsForSale/productsForSale";
 import Dashboard from "./components/Dashboard/dashboard";
 import { CreateProduct } from "./components/CreateProduct/CreateProduct";
-import { LandingPage } from "./components/LandingPage/LandingPage";
 import Logout from "./components/Logout/logout";
-import { Link } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -53,7 +51,6 @@ function App() {
     let response = await axios.get(
       `https://localhost:44394/api/ratings/${productId}`
     );
-    console.log(response.data);
     var sumRating = 0;
     var denom = 0;
     response.data.map((rating, index) => {
@@ -62,7 +59,6 @@ function App() {
     });
     const avgRating = sumRating / denom;
     const normAvgRating = avgRating.toFixed(1);
-    console.log(avgRating);
     if (isNaN(avgRating)) {
       setProductAvgRating(0);
     } else {
@@ -71,6 +67,9 @@ function App() {
   };
 
   useEffect(async () => {
+    let response = await axios.get(`https://localhost:44394/api/products`);
+    setProducts(response.data);
+    console.log(products);
     getUser();
     <Redirect to="/allProducts" />;
   }, []);
@@ -114,10 +113,9 @@ function App() {
   return (
     <div className="App">
       <NavBar searchProducts={searchProducts} user={user} />
-
+      <Redirect to="/allProducts" />
       {/* links to other pages inside of switch    */}
       <Switch>
-        <Route path="/" component={LandingPage} />
         <Route
           path="/allProducts"
           render={(props) => (
