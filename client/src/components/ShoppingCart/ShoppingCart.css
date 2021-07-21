@@ -25,7 +25,7 @@
 
 .delete-item {
   max-height: 3vh;
-  margin: 3vh 0 0 2vw;
+  margin: 1.5vh 0 1vw 2vw;
   border: rgba(255, 0, 0, 0.596) 1px solid;
   color: red;
   background-color: white;

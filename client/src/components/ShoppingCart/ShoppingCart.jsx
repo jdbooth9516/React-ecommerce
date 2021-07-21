@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import "./ShoppingCart.css";
 
 const ShoppingCart = (props) => {
   function removeItem(id) {
@@ -27,11 +28,11 @@ const ShoppingCart = (props) => {
       products.push(cartProduct.pop());
     }
     const productsInCart = products.map((product, index) => (
-      <div>
-        <h1>{product.name}</h1>
-        <h2>{product.price}</h2>
+      <div className="cart-item">
+        <h1 className="cart-title">{product.name}</h1>
+        <h2 className="cart-price">{product.price}</h2>
         <button
-          className="delete item"
+          className="delete-item"
           onClick={() => {
             removeItem(props.shoppingCart[index].shoppingCartId);
           }}
@@ -46,7 +47,7 @@ const ShoppingCart = (props) => {
         <div>
           <h1>{props.user.userName}'s Shopping Cart</h1>
         </div>
-        <div>{productsInCart}</div>
+        <div className="cart-body">{productsInCart}</div>
         <div>Total Cost: ${priceTotal}</div>
       </div>
     );
