@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./displayProducts.css";
 
 const DisplayProducts = (props) => {
   const categories = props.categories.map((category) => (
     <div
+      className="category-card"
       onClick={() => {
         props.setCategoryId(category.categoryId);
       }}
@@ -18,24 +20,24 @@ const DisplayProducts = (props) => {
       onClick={() => {
         props.setProductId(product.productId);
       }}
+      className="product-card"
     >
       <Link className="links" to={"/product/" + product.productId}>
-        <h1>{product.name}</h1>
-        <h2>{product.price}</h2>
+        <h1 className="product-name">{product.name}</h1>
+        <h2 className="product-price">{product.price}</h2>
       </Link>
     </div>
   ));
 
   return (
-    <div>
-      <div>
-        <h3>Categories</h3>
-        {categories}
+    <div className="main-products-container">
+      <div className="category-container">
+        <h3 className="category-title">Categories:</h3>
+        <div className="category-links">{categories}</div>
       </div>
-
-      <div>
+      <div className="products-body">
         <h3>Products</h3>
-        {products}
+        <div className="products-container">{products}</div>
       </div>
     </div>
   );

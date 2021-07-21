@@ -34,7 +34,7 @@ const AddRating = (props) => {
 
   return (
     <div className="rating-dropdown">
-      <form onSubmit={handleSubmit} className="search-form" method="post">
+      <form onSubmit={handleSubmit} className="rating-form" method="post">
         <label className="rating-dropdown-label">Rate This Product:</label>
         <select
           className="selection"
