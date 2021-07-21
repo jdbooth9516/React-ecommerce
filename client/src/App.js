@@ -2,7 +2,6 @@ import { Switch, Route, Redirect, Router } from "react-router-dom";
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import DisplayProducts from "./components/DisplayProducts/displayProducts";
 import { ProductDetails } from "./components/ProductDetails/ProductDetails";
@@ -12,7 +11,10 @@ import DisplayCategory from "./components/displayCategory/DisplayCategory";
 import DisplayProductsForSale from "./components/ProductsForSale/productsForSale";
 import Dashboard from "./components/Dashboard/dashboard";
 import { CreateProduct } from "./components/CreateProduct/CreateProduct";
+import { LandingPage } from "./components/LandingPage/LandingPage";
 import Logout from "./components/Logout/logout";
+import { Link } from "react-router-dom";
+import "./App.css";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -69,7 +71,6 @@ function App() {
   };
 
   useEffect(async () => {
-    //getCategories();
     getUser();
     <Redirect to="/allProducts" />;
   }, []);
@@ -113,8 +114,10 @@ function App() {
   return (
     <div className="App">
       <NavBar searchProducts={searchProducts} user={user} />
+
       {/* links to other pages inside of switch    */}
       <Switch>
+        <Route path="/" component={LandingPage} />
         <Route
           path="/allProducts"
           render={(props) => (
