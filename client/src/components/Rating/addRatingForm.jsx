@@ -7,22 +7,21 @@ const AddRating = (props) => {
   const postRating = async () => {
     if (values.userRating) {
       const rating = {
-        userRating: parseInt(values.userRating),
-        productId: props.productId,
-        userId: "75a188ee-076f-4a8e-aa6e-250ab945eaa1",
-        //using hard coded userId for test
+        UserRating: parseInt(values.userRating),
+        ProductId: props.productId,
+        UserId: props.UserId,
       };
       let response = await axios.post(
         `https://localhost:44394/api/ratings`,
         rating
       );
       alert(`Successfully rated as ${values.userRating}`);
+      window.location.href = `/products/${props.productId}`;
     } else {
       const rating = {
         userRating: 1,
         productId: props.productId,
-        userId: "75a188ee-076f-4a8e-aa6e-250ab945eaa1",
-        //using hard coded userId for test
+        userId: props.UserId,
       };
       let response = await axios.post(
         `https://localhost:44394/api/ratings`,

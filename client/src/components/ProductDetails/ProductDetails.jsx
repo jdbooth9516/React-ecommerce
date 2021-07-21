@@ -19,7 +19,7 @@ function AddProductToCart(props) {
       );
       window.location.href = "/cart";
     } catch (error) {
-      console.error(error.resposne.data);
+      console.error(error.response.data);
     }
   }
   sendProduct(props);

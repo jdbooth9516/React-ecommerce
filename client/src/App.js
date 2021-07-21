@@ -8,6 +8,7 @@ import DisplayProducts from "./components/DisplayProducts/displayProducts";
 import { ProductDetails } from "./components/ProductDetails/ProductDetails";
 import Login from "./components/LogIn/logIn";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
+import DisplayCategory from "./components/displayCategory/DisplayCategory";
 import DisplayProductsForSale from "./components/ProductsForSale/productsForSale";
 import Dashboard from "./components/Dashboard/dashboard";
 import { CreateProduct } from "./components/CreateProduct/CreateProduct";
@@ -20,6 +21,7 @@ function App() {
   const [shoppingCart, setShoppingCart] = useState([]);
   const [user, setUser] = useState({});
   const [categories, setCategories] = useState([]);
+  const [categoryId, setCategoryId] = useState(0);
   const [productAvgRating, setProductAvgRating] = useState([]);
 
   useEffect(async () => {
@@ -46,25 +48,28 @@ function App() {
   };
 
   const getAvgRating = async (productId) => {
-    let response = await axios.get(`https://localhost:44394/api/ratings/${productId}`);
+    let response = await axios.get(
+      `https://localhost:44394/api/ratings/${productId}`
+    );
     console.log(response.data);
     var sumRating = 0;
     var denom = 0;
-    response.data.map((rating, index)=>{
+    response.data.map((rating, index) => {
       sumRating += rating.userRating;
       denom = index + 1;
     });
-    const avgRating = sumRating/denom;
+    const avgRating = sumRating / denom;
     const normAvgRating = avgRating.toFixed(1);
     console.log(avgRating);
-    if(isNaN(avgRating)){
+    if (isNaN(avgRating)) {
       setProductAvgRating(0);
-    }else{
+    } else {
       setProductAvgRating(normAvgRating);
     }
-  }
+  };
 
   useEffect(async () => {
+    //getCategories();
     getUser();
     <Redirect to="/allProducts" />;
   }, []);
@@ -117,6 +122,18 @@ function App() {
               {...props}
               products={products}
               setProductId={setProductId}
+              categories={categories}
+              setCategoryId={setCategoryId}
+            />
+          )}
+        />
+        <Route
+          path={"/category/" + categoryId}
+          render={(props) => (
+            <DisplayCategory
+              {...props}
+              categoryId={categoryId}
+              categories={categories}
             />
           )}
         />
@@ -141,9 +158,9 @@ function App() {
               productReviews={productReviews}
               user={user}
               categories={categories}
-              product={products.filter(
-                (product) => product.productId == productID
-              ).pop()}
+              product={products
+                .filter((product) => product.productId == productID)
+                .pop()}
               productAvgRating={productAvgRating}
               productId={productID}
               getProductReviews={getProductReviews}
