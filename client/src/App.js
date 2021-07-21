@@ -136,6 +136,8 @@ function App() {
               {...props}
               categoryId={categoryId}
               categories={categories}
+              products={products}
+              setProductId={setProductId}
             />
           )}
         />

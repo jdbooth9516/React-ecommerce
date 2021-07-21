@@ -12,14 +12,8 @@ const DisplayCategory = (props) => {
 
   function getCategoryProducts(props) {
     async function displayProducts(props) {
-      try {
-        const response = await axios.get(
-          `https://localhost:44394/api/products/category/${props.categoryId}`
-        );
-        setFilteredProducts(response.data);
-      } catch (error) {
-        console.error(error.response.data);
-      }
+        const response = props.products.filter(p=> p.categoryId == props.categoryId);
+        setFilteredProducts(response);
     }
     displayProducts(props);
   }
