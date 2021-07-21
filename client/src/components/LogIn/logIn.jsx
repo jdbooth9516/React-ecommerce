@@ -5,6 +5,7 @@ import useForm from "../UseForm/useForm";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import "./login.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,9 +67,10 @@ const Login = (props) => {
   }
 
   return (
-    <container maxWidth="sm">
+    <container className="login-container" maxWidth="sm">
+      <h2>Log In</h2>
       <form className={classes.root}>
-        <div>
+        <div className="login-form">
           <TextField
             id="standard-basic"
             label="Username"
