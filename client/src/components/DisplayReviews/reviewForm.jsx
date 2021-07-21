@@ -1,6 +1,7 @@
 import React from "react";
 import useForm from "../UseForm/useForm";
 import axios from "axios";
+import "./displayReviews.css";
 
 const ReviewForm = (props) => {
   const addReview = async () => {

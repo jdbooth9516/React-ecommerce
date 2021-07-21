@@ -7,7 +7,7 @@
 
 .main-body {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   margin: 5vh 3vw 5vh 3vw;
   padding-bottom: 5vh;
@@ -15,23 +15,59 @@
 }
 
 .text-container {
-  display: block;
+  display: flex;
   flex-direction: column;
   margin-left: 0vw;
+  padding: 1em;
+  background-color: white;
 }
 
 .buying {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   margin-right: 0vw;
+  padding: 1em;
+  background-color: white;
 }
 
 .price {
   font-size: 1.1em;
 }
 
+.add-btn {
+  max-height: 8vh;
+}
+.MuiButton-outlined {
+  padding: 0;
+}
+
+.reviews-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .reviews {
+  background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin: 5vh 10vw 5vh 10vw;
-  border: solid black 2px;
+  justify-content: start;
+  align-items: start;
+  margin: 0;
+  min-width: 50vw;
+}
+
+.reveiews-body {
+  margin: 0;
+  padding: 0;
+}
+
+.review-container {
+  margin: 0;
+  padding: 0.5em;
+}
+
+.review-text {
+  margin-left: 1em;
 }

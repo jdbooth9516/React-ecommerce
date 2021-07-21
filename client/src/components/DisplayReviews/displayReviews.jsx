@@ -4,12 +4,12 @@ import "./displayReviews.css";
 const DisplayProductReviews = (props) => {
   if (props.productReviews.length > 0) {
     const reviews = props.productReviews.map((review) => (
-      <div className="reviews">
+      <div className="reviews-body">
         <div>
-          <p>User {review.Name} review:</p>
+          <h4>User {review.Name} review:</h4>
         </div>
         <div>
-          <h2>{review.userReview}</h2>
+          <p className="review-text">{review.userReview}</p>
         </div>
       </div>
     ));

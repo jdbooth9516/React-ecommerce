@@ -37,19 +37,19 @@ export const ProductDetails = (props) => {
         <div className="text-container">
           <div>
             <h1>{props.product.name}</h1>
-          </div>
-          <div>
-            <h2>{props.product.discription}</h2>
-          </div>
-          <div>
             <p>Category: {category.name}</p>
+            <p>Avg Rating: {props.productAvgRating}</p>
+          </div>
+          <div>
+            <h5>About this Item:</h5>
+            <p>{props.product.discription}</p>
           </div>
         </div>
         <div className="buying">
           <div>
             <h3 className="price">Price: ${props.product.price}</h3>
           </div>
-          <div>
+          <div className="add-btn">
             <Button
               variant="outlined"
               color="primary"
@@ -58,14 +58,11 @@ export const ProductDetails = (props) => {
               Add to Cart
             </Button>
           </div>
-          <div>
-            <p>Avg Rating: {props.productAvgRating}</p>
-          </div>
         </div>
       </div>
 
-      <div>
-        <div>
+      <div className="reviews-container">
+        <div className="rating">
           <AddRating productId={props.productId} />
         </div>
         <div className="reviews">
