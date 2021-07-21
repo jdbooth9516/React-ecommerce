@@ -26,6 +26,7 @@ function AddProductToCart(props) {
 }
 
 export const ProductDetails = (props) => {
+  const user = props.user;
   const category = props.categories
     .filter((c) => c.categoryId == props.product.categoryId)
     .pop();
@@ -50,6 +51,9 @@ export const ProductDetails = (props) => {
             <h3 className="price">Price: ${props.product.price}</h3>
           </div>
           <div className="add-btn">
+          {!user.firstName ? (
+              <div />
+              ) : (
             <Button
               variant="outlined"
               color="primary"
@@ -57,6 +61,7 @@ export const ProductDetails = (props) => {
             >
               Add to Cart
             </Button>
+              )}
           </div>
         </div>
       </div>

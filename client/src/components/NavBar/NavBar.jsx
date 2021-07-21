@@ -135,6 +135,15 @@ export default function NavBar(props) {
               </Link>
             </IconButton>
           </div>
+          <div>
+            {!user.firstName ? (
+              <div />
+              ) : (
+                <Typography>
+                  Welcome {user.userName}
+                </Typography>
+            )}
+          </div>
         </Toolbar>
       </AppBar>
     </div>
