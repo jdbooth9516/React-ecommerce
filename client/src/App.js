@@ -1,4 +1,4 @@
-import { Switch, Route, Redirect, Router } from "react-router-dom";
+import { Switch, Route, Redirect, Link } from "react-router-dom";
 import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -8,12 +8,11 @@ import { ProductDetails } from "./components/ProductDetails/ProductDetails";
 import Login from "./components/LogIn/logIn";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import DisplayCategory from "./components/displayCategory/DisplayCategory";
-import DisplayProductsForSale from "./components/ProductsForSale/productsForSale";
+
 import Dashboard from "./components/Dashboard/dashboard";
 import { CreateProduct } from "./components/CreateProduct/CreateProduct";
 import Logout from "./components/Logout/logout";
 import "./App.css";
-import { LaptopWindowsOutlined } from "@material-ui/icons";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -115,7 +114,12 @@ function App() {
   return (
     <div className="App">
       <NavBar searchProducts={searchProducts} user={user} />
-      {/* <Redirect to="/allProducts" /> */}
+      {!user.firstName ? (
+        <div>
+          <h2> Welcome </h2>
+          <h4> Please register and login for full access</h4>
+        </div>
+      ) : null}
       {/* links to other pages inside of switch    */}
       <Switch>
         <Route
